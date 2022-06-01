@@ -4,6 +4,7 @@ import './index.css';
 import {ArrowCircleRightIcon, ArrowLeftIcon, ChevronLeftIcon, PlusIcon} from "@heroicons/react/outline"
 import Modal from "./components/Modal"
 import axios from 'axios';
+import DrugInfo from './DrugInfo';
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
   const [selectedFile, setSelectedFile] = useState(null)
   const [encoding, setEncoding] = useState("")
   const [loading, setLoading] = useState(false)
-  const [textFromImage, setTextFromImage] = useState("")
+  const [textFromImage, setTextFromImage] = useState('')
 
   const handleUploadClick = (event) => {
     var file = event.target.files[0];
@@ -32,7 +33,7 @@ function App() {
     setMainState(false);
     setSelectedFile(null);
     setImageUploaded(0);
-    setTextFromImage("")
+    setTextFromImage('')
     setLoading(false)
   }
 
@@ -44,20 +45,17 @@ function App() {
     .then(res => {
       setTimeout(() => setLoading(false), 200)
       setTextFromImage(res.data);
-      console.log(res.data)
     })
   }
   
-  console.log(textFromImage.split(/\r?\n/))
-
   return (
     <div className="grid place-items-center h-screen p-6">
-      <div className='max-w-xl w-full aspect-square shadow-2xl shadow-blue-500/40 rounded-2xl p-6'>
+      <div className='max-w-xl w-full shadow-2xl shadow-blue-500/40 rounded-2xl p-6'>
         
         <p className="text-2xl font-semibold mb-2">Primary Record</p>
         
         {selectedFile == null ?
-          <div className="border-dashed border border-gray-400 text-gray-500 h-full grid place-items-center">
+          <div className="border-dashed border-2 rounded-sm border-gray-300 text-gray-500 h-[400px] grid place-items-center">
           
             <div>
               <PlusIcon className='w-6 h-6 mx-auto mb-2' />
@@ -65,7 +63,7 @@ function App() {
               <p className="font-semibold text-center">Drag Image or</p>
               
               <label 
-                for='image-upload' 
+                htmlFor='image-upload' 
                 className='font-semibold text-center text-blue-500 mx-auto block cursor-pointer'
               >
                 Browse
@@ -96,24 +94,23 @@ function App() {
                 </div>
 
                 <div className='mt-4 text-center font-semibold'>
-                  <button 
-                    className="rounded-full flex items-center gap-2 drop-shadow-xl border-blue-500 border-2 text-blue-500 font-semibold text-center mx-auto px-4 py-2 hover:scale-105 active:scale-95 transition duration-100 ease-in group"
+                  <div 
+                    className="rounded-full cursor-pointer w-fit flex items-center gap-2 border-blue-500 border-2 text-blue-500 font-semibold text-center mx-auto px-4 py-2 hover:bg-blue-50 active:scale-95 transition duration-200 ease-in group"
                     onClick={uploadImage}
                   >
                       <p className='text-base'>Extract Text</p>
                       {!loading ? 
                         <ArrowCircleRightIcon className='w-6 h-6 group-hover:translate-x-1 transition duration-100 ease-in' />
                         :
-                        <svg class="animate-spin h-6 w-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <svg className="animate-spin h-6 w-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
                       }
                       
-                  </button>
+                  </div>
                   <p>or</p>
                   <button 
-                    for='image-upload' 
                     className='font-semibold text-center text-blue-500 mx-auto block cursor-pointer'
                     onClick={imageResetHandler}
                   >
@@ -126,38 +123,14 @@ function App() {
               <>
                 <button
                   onClick={() => setTextFromImage("")}
-                  className='mr-auto flex items-center gap-2 text-blue-500 font-semibold mb-2'
+                  className='mr-auto flex items-center gap-2 text-blue-500 font-semibold my-4'
                 >
                   <ChevronLeftIcon className='w-6 h-6' />
                   <p>Go Back</p>
                 </button>
 
-                <div className='flex flex-col gap-4'>
-                  {textFromImage.split(/\r?\n/).map((line) => (
-                    <label className='text-sm font-semibold'>
-                      Name
-                      <input 
-                        type='text' 
-                        value={line}
-                        className='
-                          rounded-md
-                          p-2
-                          w-full
-                          bg-gray-200
-                          focus:bg-white
-                          transition
-                          duration-200
-                          ease-in
-                          focus:ring-2
-                          focus:ring-gray-300
-                          appearance-none
-                        '
-                      />
-                    </label>
-                  ))}
-                </div>
+                {textFromImage && <DrugInfo data={textFromImage} />}
                 
-                <button className="px-8 py-2 rounded-md text-center font-semibold bg-blue-500 text-white mt-4 mx-auto block">Submit</button>
               </>
             }
           </>
