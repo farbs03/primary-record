@@ -5,6 +5,7 @@ import {ArrowCircleRightIcon, ArrowLeftIcon, ChevronLeftIcon, PlusIcon} from "@h
 import Modal from "./components/Modal"
 import axios from 'axios';
 import DrugInfo from './DrugInfo';
+import Tutorial from './Tutorial';
 
 function App() {
 
@@ -50,9 +51,13 @@ function App() {
   
   return (
     <div className="grid place-items-center h-screen p-6">
+
       <div className='max-w-xl w-full shadow-2xl shadow-blue-500/40 rounded-2xl p-6'>
         
-        <p className="text-2xl font-semibold mb-2">Primary Record</p>
+        <div className="flex gap-2 items-center mb-2">
+          <p className="text-xl font-bold tracking-tight">Primary Record</p>
+          <Tutorial />
+        </div>
         
         {selectedFile == null ?
           <div className="border-dashed border-2 rounded-sm border-gray-300 text-gray-500 h-[400px] grid place-items-center">

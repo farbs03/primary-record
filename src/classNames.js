@@ -1,3 +1,3 @@
 export const classNames = {
-    textfield: 'text-sm border-white border-2 focus:ring-blue-500 focus:border-blue-500 rounded-md p-2 w-full bg-gray-100 focus:bg-white transition duration-200 ease-in appearance-none'
+    textfield: 'bg-gray-100 border border-white text-sm rounded-md focus:bg-white focus:ring-blue-500 focus:border-blue-500 p-2.5 transition duration-200 ease-in w-full block'
 }

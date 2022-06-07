@@ -1,18 +1,13 @@
-/*
-Process:
-- Take in data (originally a single string)
-- For now, try keeping it a single string
-- Try to find medication name, quantity, strength, and form
-- medication name found with fda db of medication names
-- Quantity found with  
-*/
+import toTitleCase from "./utils/toTitleCase"
+
 export default function categorize(data) {
     //let textList = data.split(/\r?\n/)
+    console.log(data)
     let foundData = {
         medicationName: '',
-        quantity: '',
         strength: '',
-        form: ''
+        form: '',
+        instructions: ''
     }
 
     let formatted = data.toLowerCase()
@@ -22,9 +17,11 @@ export default function categorize(data) {
     let importantFound = importantRe.exec(formatted)[0]
     let importantList = importantFound.split(' ')
 
-    let medicationName = importantList[0]
+    let medicationName = toTitleCase(importantList[0])
     let strength = importantList[1] + ' ' + importantList[2]
-    let form = importantList[3]
+    let form = toTitleCase(importantList[3])
+
+    let instructionsRe = /[t|T]ake \w+/g
 
     foundData = {...foundData, medicationName: medicationName, strength: strength, form: form}
 

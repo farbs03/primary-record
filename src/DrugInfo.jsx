@@ -24,16 +24,6 @@ const DrugInfo = ({data}) => {
             </label>
 
             <label className='text-sm font-semibold'>
-                Quantity
-                <input 
-                    type='text'
-                    value={foundData.quantity}
-                    onChange={(e) => setFoundData({...foundData, quantity: e.target.value})}
-                    className={classNames.textfield}
-                />
-            </label>
-
-            <label className='text-sm font-semibold'>
                 Strength
                 <input 
                     type='text'
@@ -49,6 +39,16 @@ const DrugInfo = ({data}) => {
                     type='text'
                     value={foundData.form}
                     onChange={(e) => setFoundData({...foundData, form: e.target.value})}
+                    className={classNames.textfield}
+                />
+            </label>
+
+            <label className='text-sm font-semibold'>
+                Instructions
+                <input 
+                    type='text'
+                    value={foundData.instructions}
+                    onChange={(e) => setFoundData({...foundData, instructions: e.target.value})}
                     className={classNames.textfield}
                 />
             </label>
