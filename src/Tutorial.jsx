@@ -6,6 +6,10 @@ import Modal from './components/Modal'
 
 import { motion, AnimatePresence } from 'framer-motion'
 
+import TakePhoto from "./assets/takephoto.svg"
+import DrugInfo from "./assets/druginfo.svg"
+import SubmitButton from "./assets/submitbutton.svg"
+
 const Tutorial = () => {
     
     const [open, setOpen] = useState(false)
@@ -30,20 +34,23 @@ const Tutorial = () => {
 
     const slideData = [
         {
-            title: 'Slide 1',
-            text: 'Stuff here idk',
+            title: 'Upload a Photo',
+            text: 'Take a picture of the prescription label whose text you want processed by our system',
             bg: 'from-green-200 to-blue-300',
+            image: TakePhoto
 
         },
         {
-            title: 'Slide 2',
-            text: 'Stuff here idk',
-            bg: 'from-red-200 to-indigo-300'
+            title: 'Confirm and Edit Drug Info',
+            text: 'After our system obtains and classifies the text from your image, you may edit/confirm this info',
+            bg: 'from-red-200 to-indigo-300',
+            image: DrugInfo
         },
         {
-            title: 'Slide 3',
-            text: 'Stuff here idk',
-            bg: 'from-cyan-200 to-purple-300'
+            title: 'Submit Info',
+            text: 'Just like that, you can save important drug info to your profile! You may edit this info at any time afterwards',
+            bg: 'from-cyan-200 to-purple-300',
+            image: SubmitButton
         }
     ]
 
@@ -56,7 +63,7 @@ const Tutorial = () => {
 
             <Modal open={open} setOpen={setOpen}>
 
-                <div className="w-80 h-96 relative grid place-items-center">
+                <div className="w-80 h-[450px] relative grid place-items-center">
 
                     {slideData.map((slide, number) => (
                         <AnimatePresence>
@@ -67,9 +74,12 @@ const Tutorial = () => {
                                     animate={{opacity: 1}}
                                     exit={{opacity: 0}}
                                     transition={{duration: 0.4}}
-                                    className='w-80 h-96 absolute z-0'
+                                    className='w-80 h-[450px] absolute'
                                 >
-                                    <div className={`h-1/2 rounded-t-xl bg-gradient-to-tr ${slide.bg} opacity-60`} />
+                                    <div className="relative h-1/2 bg-white grid place-items-center rounded-t-xl">
+                                        <div className={`h-full w-full z-0 absolute rounded-t-xl bg-gradient-to-tr ${slide.bg} blur-lg opacity-80`} />
+                                        <img src={slide.image} className='absolute z-10 max-h-[90%] max-w-[90%]' />
+                                    </div>
                                     
                                     <motion.div 
                                         initial={{x: 20}}
@@ -79,11 +89,11 @@ const Tutorial = () => {
                                         className="p-4 h-1/2"
                                     >
                                         <div className="text-center">
-                                            <p className="font-semibold text-xl">{slide.title}</p>
-                                            <p className="mt text-gray-700 font-semibold">{slide.text}</p>
+                                            <p className="font-semibold text-xl tracking-tight">{slide.title}</p>
+                                            <p className="mt-2 text-gray-800 font-semibold">{slide.text}</p>
                                         </div>
                                         
-                                        <div className='flex items-center gap-8 w-fit mx-auto mt-4'>
+                                        <div className='flex items-center gap-8 w-fit mx-auto my-4'>
                                             <button
                                                 className='text-blue-500 text-sm font-semibold px-8 py-3'
                                                 onClick={() => setOpen(false)}
