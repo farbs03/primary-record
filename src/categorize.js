@@ -2,12 +2,10 @@ import toTitleCase from "./utils/toTitleCase"
 
 export default function categorize(data) {
     //let textList = data.split(/\r?\n/)
-    console.log(data)
     let foundData = {
         medicationName: '',
         strength: '',
-        form: '',
-        instructions: ''
+        form: ''
     }
 
     let formatted = data.toLowerCase()
@@ -21,9 +19,7 @@ export default function categorize(data) {
     let strength = importantList[1] + ' ' + importantList[2]
     let form = toTitleCase(importantList[3])
 
-    let instructionsRe = /[t|T]ake \w+/g
-
-    foundData = {...foundData, medicationName: medicationName, strength: strength, form: form}
+    foundData = {medicationName: medicationName, strength: strength, form: form}
 
     return foundData
 }

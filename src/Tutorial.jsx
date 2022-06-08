@@ -35,21 +35,21 @@ const Tutorial = () => {
     const slideData = [
         {
             title: 'Upload a Photo',
-            text: 'Take a picture of the prescription label whose text you want processed by our system',
-            bg: 'from-green-200 to-blue-300',
+            text: 'Take a picture of the prescription label whose text you want our system to identify and categorize',
+            bg: 'from-emerald-200 to-blue-300',
             image: TakePhoto
 
         },
         {
             title: 'Confirm and Edit Drug Info',
             text: 'After our system obtains and classifies the text from your image, you may edit/confirm this info',
-            bg: 'from-red-200 to-indigo-300',
+            bg: 'from-sky-200 to-violet-300',
             image: DrugInfo
         },
         {
             title: 'Submit Info',
             text: 'Just like that, you can save important drug info to your profile! You may edit this info at any time afterwards',
-            bg: 'from-cyan-200 to-purple-300',
+            bg: 'from-orange-200 to-fuchsia-300',
             image: SubmitButton
         }
     ]
@@ -77,7 +77,7 @@ const Tutorial = () => {
                                     className='w-80 h-[450px] absolute'
                                 >
                                     <div className="relative h-1/2 bg-white grid place-items-center rounded-t-xl">
-                                        <div className={`h-full w-full z-0 absolute rounded-t-xl bg-gradient-to-tr ${slide.bg} blur-lg opacity-80`} />
+                                        <div className={`h-full w-full z-0 absolute rounded-t-xl bg-gradient-to-tr ${slide.bg} blur-lg opacity-70`} />
                                         <img src={slide.image} className='absolute z-10 max-h-[90%] max-w-[90%]' />
                                     </div>
                                     
@@ -88,12 +88,12 @@ const Tutorial = () => {
                                         transition={{duration: 0.4}}
                                         className="p-4 h-1/2"
                                     >
-                                        <div className="text-center">
+                                        <div className="text-center mt-2">
                                             <p className="font-semibold text-xl tracking-tight">{slide.title}</p>
-                                            <p className="mt-2 text-gray-800 font-semibold">{slide.text}</p>
+                                            <p className="mt-1 text-sm font-semibold text-gray-600">{slide.text}</p>
                                         </div>
                                         
-                                        <div className='flex items-center gap-8 w-fit mx-auto my-4'>
+                                        <div className='flex items-center gap-8 w-fit mx-auto my-3'>
                                             <button
                                                 className='text-blue-500 text-sm font-semibold px-8 py-3'
                                                 onClick={() => setOpen(false)}
