@@ -28,6 +28,26 @@ const DrugInfo = ({data}) => {
     const [night, setNight] = useState(false)
     const [nightCount, setNightCount] = useState(0)
 
+    const [error, setError] = useState(false)
+
+    function submit() {
+        if(foundData.medicationName && foundData.strength && foundData.form && (morningCount || afternoonCount || nightCount)) {
+            let data = {
+                medicationName: foundData.medicationName,
+                strength: foundData.strength,
+                form: foundData.form,
+                morningCount: morningCount,
+                afternoonCount: afternoonCount,
+                nightCount: nightCount
+            }
+            //make api call here to database to send data to be stored
+            console.log(data)
+        }
+        else {
+            setError(true);
+        }
+    }
+
     return (
         <div className='flex flex-col gap-4 mt-4'>
             
@@ -220,6 +240,7 @@ const DrugInfo = ({data}) => {
                 duration-200
                 ease-in
                 "
+                onClick={submit}
             >
                 Submit
             </button>
