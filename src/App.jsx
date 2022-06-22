@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import './index.css';
 
-import {ArrowCircleRightIcon, ArrowLeftIcon, ChevronLeftIcon, PlusIcon} from "@heroicons/react/outline"
+import {ArrowCircleRightIcon, ArrowLeftIcon, ChevronLeftIcon, UploadIcon} from "@heroicons/react/outline"
 import Modal from "./components/Modal"
 import axios from 'axios';
 import DrugInfo from './DrugInfo';
 import Tutorial from './Tutorial';
+import Switch from './components/Switch';
 
 function App() {
 
+  {/* state management for image uploading */}
   const [mainState, setMainState] = useState(false)
   const [imageUploaded, setImageUploaded] = useState(0)
   const [selectedFile, setSelectedFile] = useState(null)
@@ -16,6 +18,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [textFromImage, setTextFromImage] = useState('')
 
+  {/* function to handle image uploading and extracting the base64 string from it */}
   const handleUploadClick = (event) => {
     var file = event.target.files[0];
     setSelectedFile(event.target.files[0])
@@ -30,6 +33,7 @@ function App() {
     setMainState(true)
   }
 
+  {/* when user wants to choose another image */}
   const imageResetHandler = () => {
     setMainState(false);
     setSelectedFile(null);
@@ -38,6 +42,7 @@ function App() {
     setLoading(false)
   }
 
+  {/* function to send base 64 string of the image to the google cloud api, and return the text from the image */}
   const uploadImage = () => {
     setLoading(true);
     axios.post('https://incentiva-cloud-vision.herokuapp.com/', {
@@ -50,9 +55,9 @@ function App() {
   }
   
   return (
-    <div className="grid place-items-center h-screen p-6">
+    <div className="grid place-items-center h-screen p-4">
 
-      <div className="relative max-w-xl w-full">
+      <div className="relative max-w-lg w-full">
         <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl blur-lg opacity-60"></div>
 
         <div className='relative z-10 bg-white rounded-2xl p-6'>
@@ -60,13 +65,14 @@ function App() {
           <div className="flex gap-2 items-center mb-2">
             <p className="text-xl font-bold tracking-tight">Primary Record</p>
             <Tutorial />
+            <Switch />
           </div>
           
           {selectedFile == null ?
             <div className="border-dashed border-2 rounded-sm border-gray-300 text-gray-500 h-[400px] grid place-items-center">
             
               <div>
-                <PlusIcon className='w-6 h-6 mx-auto mb-2' />
+                <UploadIcon className='w-10 h-10 mx-auto mb-2' />
                 
                 <p className="font-semibold text-center">Drag Image or</p>
                 

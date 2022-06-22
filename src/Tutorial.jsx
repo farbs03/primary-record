@@ -25,6 +25,7 @@ const Tutorial = () => {
         }
     }
 
+    //ensures this only pops up automatically if the user is visiting the website for the first time
     useEffect(() => {
         if(!localStorage.getItem('visitedWebsite')) {
             localStorage.setItem('visitedWebsite', true)
