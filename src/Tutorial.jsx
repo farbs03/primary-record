@@ -59,12 +59,12 @@ const Tutorial = () => {
         <>
 
             <button onClick={() => setOpen(true)}>
-                <InformationCircleIcon className='w-6 h-6 text-gray-800' />
+                <InformationCircleIcon className='w-6 h-6 text-gray-800 dark:text-gray-200' />
             </button>
 
             <Modal open={open} setOpen={setOpen}>
 
-                <div className="w-80 h-[450px] relative grid place-items-center">
+                <div className="w-80 h-[450px] relative grid place-items-center rounded-xl dark:text-white dark:bg-gray-800">
 
                     {slideData.map((slide, number) => (
                         <AnimatePresence>
@@ -75,7 +75,7 @@ const Tutorial = () => {
                                     animate={{opacity: 1}}
                                     exit={{opacity: 0}}
                                     transition={{duration: 0.4}}
-                                    className='w-80 h-[450px] absolute'
+                                    className='w-80 h-[450px] absolute rounded-xl dark:bg-gray-800'
                                 >
                                     <div className="relative h-1/2 bg-white grid place-items-center rounded-t-xl">
                                         <div className={`h-full w-full z-0 absolute rounded-t-xl bg-gradient-to-tr ${slide.bg} blur-lg opacity-70`} />
@@ -87,11 +87,11 @@ const Tutorial = () => {
                                         animate={{x: 0}}
                                         exit={{x: -20}}
                                         transition={{duration: 0.4}}
-                                        className="p-4 h-1/2"
+                                        className="p-4 h-1/2 bg-white dark:bg-gray-800 rounded-b-xl"
                                     >
                                         <div className="text-center mt-2">
                                             <p className="font-semibold text-xl tracking-tight">{slide.title}</p>
-                                            <p className="mt-1 text-sm font-semibold text-gray-600">{slide.text}</p>
+                                            <p className="mt-1 text-sm font-semibold text-gray-600 dark:text-gray-400">{slide.text}</p>
                                         </div>
                                         
                                         <div className='flex items-center gap-8 w-fit mx-auto my-3'>
@@ -120,9 +120,9 @@ const Tutorial = () => {
                         {[0, 1, 2].map((number) => (
                             <div className='w-2 h-2 rounded-full' key={number}>
                                 {number === currSlide ?
-                                    <div className='w-2 h-2 rounded-full bg-black/80 transition-all duration-200' />
+                                    <div className='w-2 h-2 rounded-full bg-black/80 dark:bg-white/40 transition-all duration-200' />
                                     :
-                                    <div className='w-2 h-2 rounded-full bg-black/40 transition-all duration-200' />
+                                    <div className='w-2 h-2 rounded-full bg-black/40 dark:bg-white/20 transition-all duration-200' />
                                 }
                             </div>
                         ))}

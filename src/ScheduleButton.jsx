@@ -26,7 +26,7 @@ const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, l
                     transition 
                     duration-100 
                     ease-in
-                    ${selected ? colors : "text-gray-500 ring-gray-300"}
+                    ${selected ? colors : "text-gray-500 ring-gray-300 dark:ring-gray-500"}
                 `}
                 onClick={() => {setSelected(!selected); setValue(0)}}
             >
@@ -44,10 +44,10 @@ const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, l
                     >
                         {value}
                         <div className="flex divide-x-2 divide-x-gray-700">
-                            <button onClick={value !== 0 ? () => setValue(value - 0.5) : () => {}} className="bg-gray-200 p-1 rounded-l-full border-r-[0.5px] border-r-gray-300">
+                            <button onClick={value !== 0 ? () => setValue(value - 0.5) : () => {}} className="bg-gray-200 dark:bg-gray-700 p-1 rounded-l-full border-r-[0.5px] border-r-gray-300 dark:border-r-gray-600">
                                 <MinusIcon className='w-4 h-4' />
                             </button>
-                            <button onClick={value !== 10 ? () => setValue(value + 0.5) : () => {}} className="bg-gray-200 p-1 rounded-r-full border-l-[0.5px] border-l-gray-300">
+                            <button onClick={value !== 10 ? () => setValue(value + 0.5) : () => {}} className="bg-gray-200 dark:bg-gray-700 p-1 rounded-r-full border-l-[0.5px] border-l-gray-300 dark:border-l-gray-600">
                                 <PlusIcon className='w-4 h-4' />
                             </button>
                         </div>

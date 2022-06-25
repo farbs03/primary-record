@@ -97,7 +97,7 @@ const DrugInfo = ({data}) => {
                         setValue={setMorningCount}
                         icon={faCoffee}
                         label="Morning"
-                        colors="ring-yellow-500 text-yellow-500 bg-yellow-50"
+                        colors="ring-yellow-500 text-yellow-500 bg-yellow-50 dark:bg-gray-800"
                     />
 
                     <ScheduleButton 
@@ -107,7 +107,7 @@ const DrugInfo = ({data}) => {
                         setValue={setAfternoonCount}
                         icon={faSun}
                         label="Afternoon"
-                        colors="ring-orange-500 text-orange-500 bg-orange-50"
+                        colors="ring-orange-500 text-orange-500 bg-orange-50 dark:bg-gray-800"
                     />
                     
                     <ScheduleButton 
@@ -117,7 +117,7 @@ const DrugInfo = ({data}) => {
                         setValue={setNightCount}
                         icon={faMoon}
                         label="Night"
-                        colors="ring-indigo-500 text-indigo-500 bg-indigo-50"
+                        colors="ring-indigo-500 text-indigo-500 bg-indigo-50 dark:bg-gray-800"
                     />
 
                     <ScheduleButton 
@@ -127,7 +127,7 @@ const DrugInfo = ({data}) => {
                         setValue={setBedtimeCount}
                         icon={faBed}
                         label="Bedtime"
-                        colors="ring-violet-500 text-violet-500 bg-violet-50"
+                        colors="ring-violet-500 text-violet-500 bg-violet-50 dark:bg-gray-800"
                     />
 
                 </div>
@@ -148,6 +148,7 @@ const DrugInfo = ({data}) => {
                 hover:ring-2
                 hover:ring-blue-500
                 hover:bg-white
+                dark:hover:bg-gray-800
                 hover:text-blue-500
 
                 active:scale-90
