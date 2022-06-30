@@ -1,4 +1,8 @@
 export const fakeUser = {
+    fName: "Chris",
+    lName: "Farber",
+    email: "chrisgfarber@gmail.com",
+    password: "ILike2Code",
     drugs: [
         {
             drugName: "Vyvanse",

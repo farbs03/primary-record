@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-import categorize from './categorize'
+import categorize from '../utils/categorize'
 
-import { classNames } from './classNames'
+import { classNames } from '../utils/classNames'
 
 import {faCoffee, faSun, faMoon, faBed} from "@fortawesome/free-solid-svg-icons"
 

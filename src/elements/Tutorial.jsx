@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 
 import { InformationCircleIcon } from "@heroicons/react/outline"
 
-import Modal from './components/Modal'
+import Modal from '../components/Modal'
 
 import { motion, AnimatePresence } from 'framer-motion'
 
-import TakePhoto from "./assets/takephoto.svg"
-import DrugInfo from "./assets/druginfo.svg"
-import SubmitButton from "./assets/submitbutton.svg"
+import TakePhoto from "../assets/takephoto.svg"
+import DrugInfo from "../assets/druginfo.svg"
+import SubmitButton from "../assets/submitbutton.svg"
 
 const Tutorial = () => {
     

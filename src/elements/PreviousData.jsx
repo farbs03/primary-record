@@ -9,7 +9,7 @@ const PreviousData = ({data}) => {
             <motion.button
                 initial={{scale: 0.8, opacity: 0, y: 2}}
                 animate={{scale: 1, opacity: 1, y: 0}}
-                transition={{duration: 0.4, delay: 0.2 + 0.2 * idx}}
+                transition={{delay: 0.2 + 0.2 * idx}}
                 onClick={() => setSelected(idx)}
                 className={`shadow-md hover:shadow-lg transition duration-200 p-4 rounded-md select-none cursor-pointer text-left ${idx === selected ? "ring-blue-500 ring-2 bg-blue-50 dark:bg-gray-900 dark:opacity-60" : ""}`}
             >
