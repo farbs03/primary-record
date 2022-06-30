@@ -3,6 +3,7 @@ import './index.css';
 
 import Layout from './elements/Layout';
 import Home from './elements/Home';
+import Events from './elements/Events';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
   return (
     <Layout selected={selected} setSelected={setSelected}>
       {selected === "Home" && <Home />}
+      {selected === "Events" && <Events />}
     </Layout>
   );
 }

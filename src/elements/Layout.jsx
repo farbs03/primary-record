@@ -48,7 +48,7 @@ const Layout = ({children, selected, setSelected}) => {
         },
         {
             icon: <CalendarIcon className='w-6 h-6' />,
-            title: "Calendar"
+            title: "Events"
         },
         {
             icon: <UserIcon className='w-6 h-6' />,
@@ -68,7 +68,7 @@ const Layout = ({children, selected, setSelected}) => {
 
                 <div className='relative z-10 bg-white dark:bg-gray-800 rounded-2xl p-6'>
 
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center pb-2">
                         <UserCircleIcon className='w-6 h-6' />
                         
                         <div className='flex items-center gap-2'>
@@ -79,7 +79,7 @@ const Layout = ({children, selected, setSelected}) => {
                         <Switch on={darkMode} onClick={toggleDarkMode} />
                     </div>
 
-                    <div className='h-[400px] overflow-y-auto'>
+                    <div className='h-[400px] overflow-y-auto py-4'>
                         {children}
                     </div>
 
