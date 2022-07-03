@@ -7,7 +7,7 @@ export default function categorize(data) {
         drugName: "",
         strength: "",
         form: "",
-        morningCount: 1,
+        morningCount: null,
         afternoonCount: null,
         nightCount: null,
         bedtimeCount: null

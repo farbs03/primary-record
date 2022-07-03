@@ -11,10 +11,7 @@ const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, l
             <button 
                 className={`
                     w-10
-                    md:w-fit
                     aspect-square
-                    md:aspect-auto
-                    md:p-2
                     flex 
                     items-center
                     justify-center
@@ -31,7 +28,6 @@ const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, l
                 onClick={() => {setSelected(!selected); setValue(0)}}
             >
                 <FontAwesomeIcon icon={icon} size='sm' />
-                <span className='hidden md:block'>{label}</span>
             </button>
             <AnimatePresence>
                 {selected &&
@@ -40,7 +36,7 @@ const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, l
                         animate={{opacity: 1, y: 0}}
                         exit={{opacity: 0, y: 2}}
                         transition={{duration: 0.4}}
-                        className="text-sm md:text-base text-center font-semibold select-none"
+                        className="text-sm text-center font-semibold select-none"
                     >
                         {value}
                         <div className="flex divide-x-2 divide-x-gray-700">

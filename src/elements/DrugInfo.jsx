@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import categorize from '../utils/categorize'
 
-import { classNames } from '../utils/classNames'
+import { styles } from '../utils/styles'
 
 import {faCoffee, faSun, faMoon, faBed} from "@fortawesome/free-solid-svg-icons"
 
@@ -10,11 +10,8 @@ import ScheduleButton from './ScheduleButton'
 
 const DrugInfo = ({data}) => {
 
-    let [foundData, setFoundData] = useState({})
+    let [foundData, setFoundData] = useState(data)
 
-    useEffect(() => {
-        setFoundData(categorize(data))
-    }, [])
 
     //state management that allows user to create their pill schedule
     const [morning, setMorning] = useState(false)
@@ -52,7 +49,7 @@ const DrugInfo = ({data}) => {
     }
 
     return (
-        <div className='flex flex-col gap-4 mt-4'>
+        <div className='flex flex-col gap-4 mt-4 -p-4'>
             
             <label className='text-sm font-semibold'>
                 Drug Name
@@ -60,7 +57,7 @@ const DrugInfo = ({data}) => {
                     type='text'
                     value={foundData.drugName}
                     onChange={(e) => setFoundData({...foundData, drugName: e.target.value})}
-                    className={classNames.textfield}
+                    className={styles.textfield}
                 />
             </label>
 
@@ -70,7 +67,7 @@ const DrugInfo = ({data}) => {
                     type='text'
                     value={foundData.strength}
                     onChange={(e) => setFoundData({...foundData, strength: e.target.value})}
-                    className={classNames.textfield}
+                    className={styles.textfield}
                 />
             </label>
 
@@ -80,7 +77,7 @@ const DrugInfo = ({data}) => {
                     type='text'
                     value={foundData.form}
                     onChange={(e) => setFoundData({...foundData, form: e.target.value})}
-                    className={classNames.textfield}
+                    className={styles.textfield}
                 />
             </label>
 
@@ -91,7 +88,7 @@ const DrugInfo = ({data}) => {
                 <div className="flex justify-between">
                     
                     <ScheduleButton 
-                        selected={morning}
+                        selected={morning || morningCount > 0}
                         setSelected={setMorning}
                         value={morningCount}
                         setValue={setMorningCount}
@@ -101,7 +98,7 @@ const DrugInfo = ({data}) => {
                     />
 
                     <ScheduleButton 
-                        selected={afternoon}
+                        selected={afternoon || afternoonCount > 0}
                         setSelected={setAfternoon}
                         value={afternoonCount}
                         setValue={setAfternoonCount}
@@ -111,7 +108,7 @@ const DrugInfo = ({data}) => {
                     />
                     
                     <ScheduleButton 
-                        selected={night}
+                        selected={night || nightCount > 0}
                         setSelected={setNight}
                         value={nightCount}
                         setValue={setNightCount}
@@ -121,7 +118,7 @@ const DrugInfo = ({data}) => {
                     />
 
                     <ScheduleButton 
-                        selected={bedtime}
+                        selected={bedtime || bedtimeCount > 0}
                         setSelected={setBedtime}
                         value={bedtimeCount}
                         setValue={setBedtimeCount}

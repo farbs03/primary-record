@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Tutorial from './Tutorial';
 import Switch from '../components/Switch';
 import { CalendarIcon, CogIcon, HomeIcon, UserIcon } from '@heroicons/react/solid';
-import { UserCircleIcon } from '@heroicons/react/outline';
+import { UserCircleIcon } from '@heroicons/react/solid';
 
 const Layout = ({children, selected, setSelected}) => {
 
@@ -63,23 +63,23 @@ const Layout = ({children, selected, setSelected}) => {
     return (
         <div className="grid place-items-center h-screen p-4 dark:text-white dark:bg-gray-900">
 
-            <div className="relative max-w-md w-full">
+            <div className="relative max-w-sm w-full">
                 <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl blur-lg opacity-60" />
 
                 <div className='relative z-10 bg-white dark:bg-gray-800 rounded-2xl p-6'>
 
                     <div className="flex justify-between items-center pb-2">
-                        <UserCircleIcon className='w-6 h-6' />
+                        <UserCircleIcon className='w-7 h-7' />
                         
                         <div className='flex items-center gap-2'>
-                            <p className="text-xl font-bold tracking-tight">Primary Record</p>
                             <Tutorial />
+                            <Switch on={darkMode} onClick={toggleDarkMode} />
                         </div>
 
-                        <Switch on={darkMode} onClick={toggleDarkMode} />
+                        
                     </div>
 
-                    <div className='h-[400px] overflow-y-auto py-4'>
+                    <div className='h-[400px] overflow-y-auto py-4 px-1'>
                         {children}
                     </div>
 
@@ -88,7 +88,7 @@ const Layout = ({children, selected, setSelected}) => {
                             <button 
                                 key={item.title}
                                 onClick={() => setSelected(item.title)} 
-                                className={`p-4 rounded-full transition duration-200 text-sm font-semibold ${item.title === selected ? "text-blue-500" : "text-gray-300 dark:text-gray-700"}`}
+                                className={`p-2 rounded-full transition duration-200 text-sm font-semibold ${item.title === selected ? "text-blue-500" : "text-gray-300 dark:text-gray-700"}`}
                             >
                                 {item.icon}
                             </button>

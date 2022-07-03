@@ -64,7 +64,7 @@ const Calendar = ({date, selectedDay, setSelectedDay, month, setMonth, year, set
     const btnClass = (limit) => {
         return classNames(
             month === limit ? "cursor-not-allowed opacity-25" : "",
-            "leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800 transition duration-200 ease-in p-1 items-center focus:outline-none"
+            "leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-200 ease-in p-1 items-center focus:outline-none"
         );
     };
 
@@ -146,7 +146,7 @@ const Calendar = ({date, selectedDay, setSelectedDay, month, setMonth, year, set
                                             isSelected(date)
                                             ? "bg-blue-500 text-gray-100"
                                             : "text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-500 dark:hover:bg-opacity-50",
-                                            "transition duration-200 ease-in inline-flex w-8 h-8 md:w-10 md:h-10 items-center justify-center cursor-pointer text-center leading-none rounded-lg md:rounded-full"
+                                            "transition duration-200 ease-in inline-flex w-10 h-10 items-center justify-center cursor-pointer text-center leading-none rounded-full"
                                         )}
                                     >
                                         {date}
