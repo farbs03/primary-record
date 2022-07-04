@@ -24,13 +24,13 @@ const PreviousData = () => {
                         >
                             <motion.button
                                 onClick={() => setSelected(drug)}
-                                className={`shadow-md hover:shadow-lg transition duration-200 relative p-4 rounded-md select-none cursor-pointer text-left ${drug.drugName === selected.drugName ? "ring-blue-500 ring-2 bg-blue-50 dark:bg-gray-900" : "ring-2 ring-gray-700"}`}
+                                className={`shadow-md hover:shadow-lg transition duration-200 relative p-4 rounded-md select-none cursor-pointer text-left ${drug.drugName === selected.drugName ? "ring-blue-500 ring-2 bg-blue-50 dark:bg-gray-900" : "ring-2 ring-gray-200 dark:ring-gray-700"}`}
                             >
                                 {drug.drugName === selected.drugName &&
                                     <div className='-ml-4 -mt-4 absolute z-10 h-full w-full rounded-md bg-blue-100/50 dark:bg-blue-900/50 grid place-items-center'>
                                         <button 
                                             onClick={() => setConfirmed(true)} 
-                                            className='bg-blue-500 p-4 rounded-full aspect-square z-20'
+                                            className='bg-blue-500 text-white p-4 rounded-full aspect-square z-20 transition-all duration-200 grid place-items-center'
                                         >
                                             <CheckIcon className='w-6 h-6' />
                                         </button>
