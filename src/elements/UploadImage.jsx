@@ -62,7 +62,7 @@ const UploadImage = () => {
             {!textFromImage ?
                 <div>
                     {selectedFile == null ?
-                        <div className="border-dashed border-2 rounded-sm border-gray-300 text-gray-500 aspect-square grid place-items-center">
+                        <div className="border-dashed border-2 border-gray-500 dark:border-gray-400 text-gray-500  dark:text-gray-500 aspect-square grid place-items-center">
                         
                             <div>
                                 <UploadIcon className='w-10 h-10 mx-auto mb-2' />
@@ -125,6 +125,7 @@ const UploadImage = () => {
                 </div>
                 :
                 <div>
+                    <a href="#" className="text-blue-500 font-semibold text-sm">Was this scan successful?</a>
                     <DrugInfo data={categorize(textFromImage)} />
                 </div>
             }

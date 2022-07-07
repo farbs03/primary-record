@@ -10,7 +10,7 @@ const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, l
         <div className="flex flex-col items-center gap-1">
             <button 
                 className={`
-                    w-10
+                    w-14
                     aspect-square
                     flex 
                     items-center
@@ -27,7 +27,7 @@ const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, l
                 `}
                 onClick={() => {setSelected(!selected); setValue(0)}}
             >
-                <FontAwesomeIcon icon={icon} size='sm' />
+                <FontAwesomeIcon icon={icon} size='lg' />
             </button>
             <AnimatePresence>
                 {selected &&
@@ -39,11 +39,11 @@ const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, l
                         className="text-sm text-center font-semibold select-none"
                     >
                         {value}
-                        <div className="flex divide-x-2 divide-x-gray-700">
-                            <button onClick={value !== 0 ? () => setValue(value - 0.5) : () => {}} className="bg-gray-200 dark:bg-gray-700 p-1 rounded-l-full border-r-[0.5px] border-r-gray-300 dark:border-r-gray-600">
+                        <div className="flex divide-x divide-x-gray-300 dark:divide-x-gray-600">
+                            <button onClick={value !== 0 ? () => setValue(value - 0.5) : () => {}} className="bg-gray-200 dark:bg-gray-700 p-1 rounded-l-full">
                                 <MinusIcon className='w-4 h-4' />
                             </button>
-                            <button onClick={value !== 10 ? () => setValue(value + 0.5) : () => {}} className="bg-gray-200 dark:bg-gray-700 p-1 rounded-r-full border-l-[0.5px] border-l-gray-300 dark:border-l-gray-600">
+                            <button onClick={value !== 10 ? () => setValue(value + 0.5) : () => {}} className="bg-gray-200 dark:bg-gray-700 p-1 rounded-r-full">
                                 <PlusIcon className='w-4 h-4' />
                             </button>
                         </div>
