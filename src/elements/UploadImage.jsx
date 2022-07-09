@@ -9,18 +9,10 @@ import FeedbackPopover from '../components/FeedbackPopover';
 const UploadImage = () => {
 
     {/* state management for image uploading */}
-    const [mainState, setMainState] = useState(false)
-    const [imageUploaded, setImageUploaded] = useState(0)
     const [selectedFile, setSelectedFile] = useState(null)
     const [encoding, setEncoding] = useState("")
     const [loading, setLoading] = useState(false)
     const [textFromImage, setTextFromImage] = useState('')
-
-    const [usingPrevious, setUsingPrevious] = useState(false)
-    const confirmUsingPrevious = () => {
-        imageResetHandler()
-        setUsingPrevious(true)
-    }
 
     /* function to handle image uploading and extracting the base64 string from it */
     const handleUploadClick = (event) => {
@@ -31,17 +23,13 @@ const UploadImage = () => {
         reader.readAsDataURL(file);
         reader.onload = () => {
             setSelectedFile([reader.result])
-            setImageUploaded(reader.result)
             setEncoding(reader.result.split("base64,")[1])
         }
-        setMainState(true)
     }
 
     /* when user wants to choose another image */
     const imageResetHandler = () => {
-        setMainState(false);
         setSelectedFile(null);
-        setImageUploaded(0);
         setTextFromImage('')
         setLoading(false)
     }

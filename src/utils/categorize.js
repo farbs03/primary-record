@@ -13,16 +13,22 @@ export default function categorize(data) {
         bedtimeCount: null
     }
 
-    let formatted = data.toLowerCase()
-    formatted = formatted.replace(/(\r\n|\n|\r)/gm, " ")
+    let formatted = data.replace(/(\r\n|\n|\r)/gm, " ")
     
-    let importantRe = /(\w+|\w+ hcl) \d+ mg \w+/g
+    let importantRe = /([A-Z]+|[A-Z]+ HCL) (\d+ MG|\d+MG) \w+/g
     let importantFound = importantRe.exec(formatted)[0]
     let importantList = importantFound.split(' ')
     
+    let listLen = importantList.length
+
     let drugName = toTitleCase(importantList[0])
-    let strength = importantList[1] + ' ' + importantList[2]
-    let form = toTitleCase(importantList[3])
+    for(let i = 1; i < listLen - 3; i++) {
+        drugName = drugName + (i < listLen - 3 ? ' ' : '') + importantList[i]
+    }
+
+    let strength = importantList[listLen - 3] + ' ' + importantList[listLen - 2]
+    
+    let form = toTitleCase(importantList[listLen - 1])
 
     foundData = {...foundData, drugName: drugName, strength: strength, form: form}
 
