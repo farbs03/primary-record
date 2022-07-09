@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Tutorial from './Tutorial';
-import Switch from '../components/Switch';
+import Tutorial from '../elements/Tutorial';
+import Switch from './Switch';
 import { CalendarIcon, CogIcon, HomeIcon, UserIcon } from '@heroicons/react/solid';
 import { UserCircleIcon } from '@heroicons/react/solid';
 

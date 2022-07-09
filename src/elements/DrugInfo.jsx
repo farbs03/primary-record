@@ -6,7 +6,7 @@ import { styles } from '../utils/styles'
 
 import {faCoffee, faSun, faMoon, faBed} from "@fortawesome/free-solid-svg-icons"
 
-import ScheduleButton from './ScheduleButton'
+import ScheduleButton from '../components/ScheduleButton'
 
 const DrugInfo = ({data}) => {
 

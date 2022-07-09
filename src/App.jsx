@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './index.css';
 
-import Layout from './elements/Layout';
+import Layout from './components/Layout';
 import Home from './elements/Home';
 import Events from './elements/Events';
 
