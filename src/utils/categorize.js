@@ -1,8 +1,8 @@
 import toTitleCase from "./toTitleCase"
 
-//function to categorize the text from the image, uses regex to find the drugName, strength, and form
+//function to categorize the text from the image, uses regex to find the drugName, strength, form, etc.
 export default function categorize(data) {
-    //let textList = data.split(/\r?\n/)
+    
     let foundData = {
         drugName: "",
         strength: "",
@@ -29,6 +29,18 @@ export default function categorize(data) {
     let strength = importantList[listLen - 3] + ' ' + importantList[listLen - 2]
     
     let form = toTitleCase(importantList[listLen - 1])
+
+    let refillRe = /REFILL: \d+ by \d+[/]\d+[/]\d+/g
+    let refillInfo = refillRe.exec(formatted)[0].split(" ")
+
+    let refillDate = refillInfo[3]
+    let numRefills = refillInfo[1]
+
+    let fillRe = /DATE FILLED: \d+[/]\d+[/]\d+/g
+    let fillDate = fillRe.exec(formatted)[0].split(" ")[2]
+
+    let prescriberRe = /PRSCBR: \w+ \w+/g
+    let prescriber = prescriberRe.exec(formatted)[0].split("PRSCBR: ")[1]
 
     foundData = {...foundData, drugName: drugName, strength: strength, form: form}
 

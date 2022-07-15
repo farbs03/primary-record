@@ -7,10 +7,10 @@ import { PlusIcon, MinusIcon } from "@heroicons/react/solid";
 //component that's used for the pill schedule UI; takes in the state values to keep track of, the icon, colors, and label that the button has
 const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, label}) => {
     return (
-        <div className="flex flex-col items-center gap-1">
+        <div className="flex flex-col items-center gap-2 w-14">
             <button 
                 className={`
-                    w-14
+                    w-12
                     aspect-square
                     flex 
                     items-center
@@ -36,17 +36,15 @@ const ScheduleButton = ({selected, setSelected, value, setValue, icon, colors, l
                         animate={{opacity: 1, y: 0}}
                         exit={{opacity: 0, y: 2}}
                         transition={{duration: 0.4}}
-                        className="text-sm text-center font-semibold select-none"
+                        className="text-xs text-center font-semibold select-none flex items-center gap-2"
                     >
-                        {value}
-                        <div className="flex divide-x divide-x-gray-300 dark:divide-x-gray-600">
-                            <button onClick={value !== 0 ? () => setValue(value - 0.5) : () => {}} className="bg-gray-200 dark:bg-gray-700 p-1 rounded-l-full">
-                                <MinusIcon className='w-4 h-4' />
-                            </button>
-                            <button onClick={value !== 10 ? () => setValue(value + 0.5) : () => {}} className="bg-gray-200 dark:bg-gray-700 p-1 rounded-r-full">
-                                <PlusIcon className='w-4 h-4' />
-                            </button>
-                        </div>
+                        <button onClick={value !== 0 ? () => setValue(value - 0.5) : () => {}}>
+                            <MinusIcon className='w-3 h-3' />
+                        </button>
+                        <p>{value}</p>
+                        <button onClick={value !== 10 ? () => setValue(value + 0.5) : () => {}}>
+                            <PlusIcon className='w-3 h-3' />
+                        </button>
                     </motion.div>
                 }
             </AnimatePresence>

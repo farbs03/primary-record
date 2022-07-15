@@ -61,20 +61,31 @@ const Calendar = ({date, selectedDay, setSelectedDay, month, setMonth, year, set
         getNoOfDays();
     }, [month]);
     
-    const btnClass = (limit) => {
-        return classNames(
-            month === limit ? "cursor-not-allowed opacity-25" : "",
-            "leading-none rounded-full transition ease-in-out duration-100 inline-flex cursor-pointer bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-200 ease-in p-2 items-center focus:outline-none"
-        );
-    };
+    const btnClass = "leading-none rounded-full transition ease-in-out duration-100 inline-flex cursor-pointer bg-gray-100 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-100 ease-in p-2 items-center focus:outline-none"
 
     const nextMonth = () => {
-        setMonth(month + 1);
+
+        if(month === 11) {
+            setYear(year + 1)
+            setMonth(0)
+        }
+        else {
+            setMonth(month + 1);
+        }
+        
         getNoOfDays();
     };
 
     const prevMonth = () => {
-        setMonth(month - 1);
+
+        if(month === 0) {
+            setYear(year - 1)
+            setMonth(11)
+        }
+        else {
+            setMonth(month - 1);
+        }
+
         getNoOfDays();
     };
 
@@ -88,8 +99,7 @@ const Calendar = ({date, selectedDay, setSelectedDay, month, setMonth, year, set
                         <button
                             type="button"
                             onClick={() => prevMonth()}
-                            disabled={month === 0}
-                            className={btnClass(0)}
+                            className={btnClass}
                         >
                             <ChevronLeftIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 inline-flex leading-none" />
                         </button>
@@ -104,8 +114,7 @@ const Calendar = ({date, selectedDay, setSelectedDay, month, setMonth, year, set
                         <button
                             type="button"
                             onClick={() => nextMonth()}
-                            disabled={month === 11}
-                            className={btnClass(11)}
+                            className={btnClass}
                         >
                             <ChevronRightIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 inline-flex leading-none" />
                         </button>
@@ -144,7 +153,7 @@ const Calendar = ({date, selectedDay, setSelectedDay, month, setMonth, year, set
                                                 "bg-blue-500 text-gray-100"
                                             : 
                                                 "hover:bg-blue-100 dark:hover:bg-blue-500 dark:hover:bg-opacity-50",
-                                                "transition duration-200 ease-in inline-flex w-9 h-9 items-center justify-center cursor-pointer text-center leading-none rounded-full font-semibold"
+                                                "transition duration-100 ease-in inline-flex w-9 h-9 items-center justify-center cursor-pointer text-center leading-none rounded-full font-semibold"
                                         )}
                                     >
                                         {date}
